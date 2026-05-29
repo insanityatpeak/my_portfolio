@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0a0a0a;
+  --surface: #111111;
+  --card: #0d1117;
+  --green-neon: #00ff41;
+  --cyan-accent: #00d4ff;
+  --muted: #4a4a4a;
+  --border-dim: #1e1e1e;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--background);
+  color: white;
+}
+
+::selection {
+  background-color: var(--green-neon);
+  color: var(--background);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 255, 65, 0.4);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 255, 65, 0.8);
+}
+
+/* Scrollbar for Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 255, 65, 0.4) transparent;
+}
+
+.glitch {
+  animation: glitch 0.3s infinite alternate;
+}
+
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
