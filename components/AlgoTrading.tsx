@@ -24,17 +24,17 @@ const data = [
 export default function AlgoTrading() {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-100px' }}
-      transition={{ duration: 0.8 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       className="py-24 max-w-4xl mx-auto px-6 w-full"
     >
       <div className="font-mono text-green-neon text-sm mb-8">
         $ ./trading_performance --rounds 1,3
       </div>
 
-      <div className="bg-card border border-cyan-accent/30 p-8 flex flex-col gap-8 shadow-[0_0_20px_rgba(0,212,255,0.05)]">
+      <div className="bg-card border border-cyan-accent/20 p-8 flex flex-col gap-8 shadow-level2 transition-shadow duration-300 hover:shadow-neon-cyan rounded-sm">
         
         <div className="h-[200px] w-full">
           <ResponsiveContainer width="100%" height="100%">
@@ -71,13 +71,13 @@ export default function AlgoTrading() {
           </div>
           <div className="flex flex-col gap-1">
             <span className="text-muted text-xs uppercase tracking-wider">Assets Traded</span>
-            <span className="font-mono text-white text-sm">HYDROGEL_PACK · VELVETFRUIT_EXTRACT · VEV_xxxx</span>
+            <span className="font-mono text-white text-sm">AMETHYSTS · STARFRUIT · ORCHIDS · VEV_xxxx</span>
           </div>
         </div>
       </div>
 
       <div className="text-muted/50 text-xs font-mono mt-4">
-        // simulated exchange — IMC Prosperity algorithmic trading competition
+        {"// simulated exchange — IMC Prosperity algorithmic trading competition"}
       </div>
     </motion.div>
   );

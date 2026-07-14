@@ -2,10 +2,11 @@ export const SITE_META = {
   name: "Priyanshu Rawat",
   university: "Manipal University Jaipur (MUJ)",
   degree: "B.Tech CSE — IoT & Information Security",
-  email: "[set in .env — don't hardcode]",
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? '',
   github: "https://github.com/insanityatpeak",
   leetcode: "https://leetcode.com/u/priyanshu_rawat_1729/",
   linkedin: "https://www.linkedin.com/in/priyanshu-rawat-235518242/",
+  x: "https://x.com/DragonE17010245",
 };
 
 export const EXPERIENCE = [
@@ -120,6 +121,7 @@ export const RESEARCH = [
     venue: "Independent Research",
     year: "2024",
     abstract: "Developed an LSTM-based anomaly detector for WPA3-SAE using a 7-input feature set and 8-frame sliding window sequences. The model achieved 98.4% accuracy with a 0.993 ROC-AUC and was successfully exported to ONNX format (<15ms inference on edge devices).",
+    link: undefined,
   },
   {
     id: "iot-lighting",
@@ -127,5 +129,6 @@ export const RESEARCH = [
     venue: "CCE3207 Academic Project",
     year: "2024",
     abstract: "Designed an IoT street lighting system utilizing NodeMCU ESP8266. Implemented NTP-based time switching over traditional LDR sensors and integrated DHT11, SG90 servo, and HW-316 relay with ThingSpeak via MQTT.",
+    link: undefined,
   },
 ];

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { SiGithub, SiLeetcode } from 'react-icons/si';
+import { SiGithub, SiLeetcode, SiX } from 'react-icons/si';
 import { FaLinkedin } from 'react-icons/fa';
 import { SITE_META } from '@/lib/constants';
 import Link from 'next/link';
@@ -33,15 +33,17 @@ export default function Navigation() {
   const navLinks = [
     { name: 'About', id: 'about' },
     { name: 'Experience', id: 'experience' },
+    { name: 'Skills', id: 'skills' },
     { name: 'Projects', id: 'projects' },
     { name: 'Research', id: 'research' },
+    { name: 'Contact', id: 'contact' },
   ];
 
   return (
     <motion.header 
-      initial={{ opacity: 0, x: -40 }}
+      initial={{ opacity: 0, x: -24 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
       className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24"
     >
       <div>
@@ -66,10 +68,10 @@ export default function Navigation() {
                   }`}
                 >
                   <span
-                    className={`nav-indicator mr-4 h-px transition-all duration-300 ease-in-out motion-reduce:transition-none ${
+                    className={`nav-indicator mr-4 h-px ${
                       activeSection === link.id
-                        ? 'w-16 bg-white'
-                        : 'w-8 bg-slate-600 group-hover:w-16 group-hover:bg-slate-200'
+                        ? 'w-16 bg-green-neon'
+                        : 'w-8 bg-slate-700 group-hover:w-16 group-hover:bg-slate-400'
                     }`}
                   ></span>
                   <span
@@ -88,10 +90,10 @@ export default function Navigation() {
         </nav>
       </div>
 
-      <ul className="ml-1 mt-8 flex items-center gap-5 lg:mt-0" aria-label="Social media">
+      <ul className="ml-1 mt-8 flex items-center gap-3 lg:mt-0" aria-label="Social media">
         <li className="shrink-0 text-xs">
           <a
-            className="block hover:text-white transition-colors duration-300 text-slate-400"
+            className="flex items-center justify-center min-w-[44px] min-h-[44px] hover:text-white transition-colors duration-300 text-slate-400 -ml-2"
             href={SITE_META.github}
             target="_blank"
             rel="noreferrer"
@@ -102,7 +104,7 @@ export default function Navigation() {
         </li>
         <li className="shrink-0 text-xs">
           <a
-            className="block hover:text-white transition-colors duration-300 text-slate-400"
+            className="flex items-center justify-center min-w-[44px] min-h-[44px] hover:text-white transition-colors duration-300 text-slate-400"
             href={SITE_META.linkedin}
             target="_blank"
             rel="noreferrer"
@@ -113,7 +115,7 @@ export default function Navigation() {
         </li>
         <li className="shrink-0 text-xs">
           <a
-            className="block hover:text-white transition-colors duration-300 text-slate-400"
+            className="flex items-center justify-center min-w-[44px] min-h-[44px] hover:text-white transition-colors duration-300 text-slate-400"
             href={SITE_META.leetcode}
             target="_blank"
             rel="noreferrer"
@@ -122,6 +124,19 @@ export default function Navigation() {
             <SiLeetcode className="h-6 w-6" />
           </a>
         </li>
+        {SITE_META.x && (
+          <li className="shrink-0 text-xs">
+            <a
+              className="flex items-center justify-center min-w-[44px] min-h-[44px] hover:text-white transition-colors duration-300 text-slate-400"
+              href={SITE_META.x}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="X (Twitter)"
+            >
+              <SiX className="h-5 w-5" />
+            </a>
+          </li>
+        )}
       </ul>
     </motion.header>
   );

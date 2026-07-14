@@ -40,14 +40,21 @@ export default function Research() {
                     {item.abstract}
                   </p>
                   
-                  <div className="mt-4">
-                    <button className="flex items-center text-sm font-medium text-slate-200 hover:text-green-neon transition-colors group/btn">
-                      <span>Read Paper</span>
-                      <span className="ml-1 inline-block transition-transform group-hover/btn:translate-x-1">
-                        →
-                      </span>
-                    </button>
-                  </div>
+                  {item.link && (
+                    <div className="mt-4">
+                      <a
+                        href={item.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex items-center text-sm font-medium text-slate-200 hover:text-green-neon transition-colors group/btn"
+                      >
+                        <span>Read Paper</span>
+                        <span className="ml-1 inline-block transition-transform group-hover/btn:translate-x-1">
+                          →
+                        </span>
+                      </a>
+                    </div>
+                  )}
                 </div>
               </motion.div>
             </li>

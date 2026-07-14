@@ -13,23 +13,29 @@ export default function About() {
       </div>
       
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="text-slate-400 font-sans"
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+        className="text-slate-400 font-sans leading-relaxed"
       >
         <p className="mb-4">
-          I&apos;m {SITE_META.name} — a backend engineer, AI/ML researcher, and algorithmic trader. Currently interning as a Software Engineer at a YC-backed startup (remote), where I work on scalable backend systems and ML-driven product features.
+          I&apos;m {SITE_META.name} — a backend engineer, AI/ML researcher, and algorithmic trader.
+          My work spans anomaly detection pipelines for wireless security protocols, low-latency
+          algorithmic trading strategies, and open-source systems engineering.
         </p>
         <p className="mb-4">
-          My work lives at the intersection of systems engineering and applied AI — from building anomaly detection pipelines for wireless security protocols to designing low-latency algorithmic trading strategies that run in live markets. I care about the full stack of a problem: the math, the architecture, and the performance.
+          My work lives at the intersection of systems engineering and applied AI — from building LSTM-based
+          anomaly detectors for WPA3-SAE to designing EMA-driven market making strategies for IMC Prosperity.
+          I care about the full stack of a problem: the math, the architecture, and the performance.
         </p>
         <p className="mb-4">
-          Outside of work, I compete in algorithmic trading simulations, grind competitive programming, and ship side projects with a startup lens — focused on things that could eventually clear a YC application.
+          Outside of work, I compete in algorithmic trading simulations, grind competitive programming, and ship
+          side projects with a startup lens — focused on things that could eventually clear a YC application.
         </p>
         <p>
-          Currently deep in: distributed backend systems, LLM tooling, cybersecurity research, and building toward early-stage VC funding.
+          Currently deep in: distributed backend systems, LLM tooling, cybersecurity research, and building toward
+          early-stage VC funding.
         </p>
       </motion.div>
     </section>

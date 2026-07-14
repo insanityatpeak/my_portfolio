@@ -60,10 +60,10 @@ export default function Skills() {
   return (
     <section id="skills" className="py-24 max-w-4xl mx-auto px-6">
       <div className="font-mono text-green-neon text-sm mb-8">
-        // 04. skills
+        {"// 04. skills"}
       </div>
 
-      <div className="bg-card border border-border-dim rounded-md overflow-hidden shadow-2xl">
+      <div className="bg-card border border-border-dim rounded-sm overflow-hidden shadow-level2 transition-shadow duration-300 hover:shadow-neon-green">
         {/* Terminal Chrome */}
         <div className="flex items-center px-4 py-3 bg-[#161b22] border-b border-border-dim">
           <div className="flex gap-2 mr-4">

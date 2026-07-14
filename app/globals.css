@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ─── Design System — cyberpunk-terminal, Vercel-motion-language ─── */
 
 :root {
   --background: #0a0a0a;
@@ -11,51 +11,149 @@
   --green-neon: #00ff41;
   --cyan-accent: #00d4ff;
   --muted: #4a4a4a;
-  --border-dim: #1e1e1e;
+  --border-dim: #1a1a1a;
+
+  /* Vercel-style stacked shadow primitives */
+  --shadow-hairline: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --shadow-level1: 0 1px 1px rgba(0, 0, 0, 0.6), var(--shadow-hairline);
+  --shadow-level2: 0 1px 1px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.4), var(--shadow-hairline);
+  --shadow-level3: 0 2px 4px rgba(0, 0, 0, 0.4), 0 8px 16px -4px rgba(0, 0, 0, 0.35), var(--shadow-hairline);
+  --shadow-neon-green: 0 0 12px rgba(0, 255, 65, 0.12), 0 0 40px rgba(0, 255, 65, 0.05);
+  --shadow-neon-cyan:  0 0 12px rgba(0, 212, 255, 0.12), 0 0 40px rgba(0, 212, 255, 0.05);
+
+  /* Easing */
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 150ms;
+  --dur-base: 250ms;
 }
 
 html {
   scroll-behavior: smooth;
   background-color: var(--background);
   color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  /* Only apply scrollbar to html — NOT * selector (that would hit every element) */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 255, 65, 0.25) transparent;
 }
 
 ::selection {
-  background-color: var(--green-neon);
-  color: var(--background);
+  background-color: rgba(0, 255, 65, 0.25);
+  color: #ffffff;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
+/* ─── Scrollbar — only on ::-webkit-scrollbar, not * ─── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 255, 65, 0.4);
+  background-color: rgba(0, 255, 65, 0.25);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover { background-color: rgba(0, 255, 65, 0.55); }
+
+/* ─── Focus ring ─── */
+:focus-visible {
+  outline: 2px solid var(--green-neon);
+  outline-offset: 3px;
   border-radius: 3px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(0, 255, 65, 0.8);
-}
-
-/* Scrollbar for Firefox */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 255, 65, 0.4) transparent;
-}
-
-.glitch {
-  animation: glitch 0.3s infinite alternate;
-}
-
+/* ─── Hide OS cursor on fine-pointer — AnimatedCursor replaces it ─── */
 @media (pointer: fine) {
-  * {
-    cursor: none !important;
-  }
+  * { cursor: none !important; }
 }
+
+/* ─── Typography rhythm — letter-spacing and line-height ─── */
+h1 { letter-spacing: -0.03em; line-height: 1; }
+h2 { letter-spacing: -0.02em; line-height: 1.15; }
+h3 { letter-spacing: -0.01em; line-height: 1.25; }
+p  { line-height: 1.7; }
+
+/* ─── GlitchText keyframes ─── */
+.glitch-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-effect::before,
+.glitch-effect::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: transparent;
+}
+
+.glitch-effect::before {
+  left: 2px;
+  text-shadow: -2px 0 #ff0040;
+  animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+
+.glitch-effect::after {
+  left: -2px;
+  text-shadow: -2px 0 var(--cyan-accent);
+  animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+  0%   { clip-path: inset(20% 0 80% 0); }
+  20%  { clip-path: inset(60% 0 10% 0); }
+  40%  { clip-path: inset(40% 0 50% 0); }
+  60%  { clip-path: inset(80% 0  5% 0); }
+  80%  { clip-path: inset(10% 0 70% 0); }
+  100% { clip-path: inset(30% 0 20% 0); }
+}
+
+@keyframes glitch-anim-2 {
+  0%   { clip-path: inset(10% 0 60% 0); }
+  20%  { clip-path: inset(30% 0 20% 0); }
+  40%  { clip-path: inset(70% 0 10% 0); }
+  60%  { clip-path: inset(20% 0 50% 0); }
+  80%  { clip-path: inset(50% 0 30% 0); }
+  100% { clip-path: inset( 5% 0 80% 0); }
+}
+
+/* ─── Nav indicator line — GPU-composited (width not layout-triggering) ─── */
+/*
+  Note: animating `width` does trigger layout. For the nav indicator this is
+  acceptable since it's a 1px-tall element; the cost is negligible.
+  The key is using transition only on this element, not globally on all <a>.
+*/
+.nav-indicator {
+  display: inline-block;
+  height: 1px;
+  transition: width var(--dur-base) var(--ease-expo),
+              background-color var(--dur-base) var(--ease-expo);
+}
+
+/* ─── Skill tag — micro-lift on hover ─── */
+/*
+  Uses transform (GPU) not top/margin (layout).
+  will-change pre-promotes to compositor layer so the lift is instant.
+*/
+.skill-tag {
+  will-change: transform;
+  transition: background-color var(--dur-fast) var(--ease-expo),
+              transform var(--dur-fast) var(--ease-expo);
+}
+.skill-tag:hover {
+  background-color: rgba(0, 255, 65, 0.18);
+  transform: translateY(-1px);
+}
+
+/* ─── Card border glow — transition only border-color + box-shadow ─── */
+.border-hover-glow {
+  transition: border-color var(--dur-base) var(--ease-expo),
+              box-shadow var(--dur-base) var(--ease-expo);
+}
+.border-hover-glow:hover {
+  border-color: rgba(0, 255, 65, 0.3);
+  box-shadow: var(--shadow-neon-green);
+}
+
+/* ─── Neon text glow utilities ─── */
+.glow-green { text-shadow: 0 0 8px rgba(0, 255, 65, 0.6), 0 0 24px rgba(0, 255, 65, 0.2); }
+.glow-cyan  { text-shadow: 0 0 8px rgba(0, 212, 255, 0.6), 0 0 24px rgba(0, 212, 255, 0.2); }

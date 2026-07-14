@@ -29,17 +29,17 @@ export default function SpaceBackground() {
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           radius: Math.random() * 1.5,
-          speed: Math.random() * 0.3 + 0.05,
+          // Faster: was 0.05–0.35, now 0.4–1.2
+          speed: Math.random() * 0.8 + 0.4,
           opacity: Math.random(),
         });
       }
     };
 
     const draw = () => {
-      // Space gradient (replaces plain black)
       const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-      gradient.addColorStop(0, '#030308'); // deep space blue at top
-      gradient.addColorStop(1, '#0a0a0a'); // terminal black at bottom
+      gradient.addColorStop(0, '#030308');
+      gradient.addColorStop(1, '#0a0a0a');
 
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -50,15 +50,13 @@ export default function SpaceBackground() {
         ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
         ctx.fill();
 
-        // Twinkle effect
-        star.opacity += (Math.random() - 0.5) * 0.05;
+        // Slightly faster twinkle to match speed
+        star.opacity += (Math.random() - 0.5) * 0.06;
         if (star.opacity < 0.1) star.opacity = 0.1;
         if (star.opacity > 1) star.opacity = 1;
 
-        // Upward movement
         star.y -= star.speed;
-        
-        // Wrap around
+
         if (star.y < 0) {
           star.y = canvas.height;
           star.x = Math.random() * canvas.width;

@@ -6,6 +6,9 @@ import Research from '@/components/Research';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
+import Skills from '@/components/Skills';
+import AlgoTrading from '@/components/AlgoTrading';
+import LeetCodeStats from '@/components/LeetCodeStats';
 
 export default function Home() {
   return (
@@ -15,13 +18,22 @@ export default function Home() {
         {/* Full width Hero at the top, matching gazijarin.com V4 style */}
         <Hero />
 
+        {/* LeetCode live stats strip */}
+        <div className="mt-8 flex justify-center lg:justify-start">
+          <LeetCodeStats />
+        </div>
+
+        {/* AlgoTrading PnL card — full-width between hero and split layout */}
+        <AlgoTrading />
+
         {/* Split layout underneath */}
-        <div className="lg:flex lg:justify-between lg:gap-4 mt-24">
+        <div className="lg:flex lg:justify-between lg:gap-4">
           <Navigation />
           
           <main className="pt-24 lg:w-1/2 lg:py-24">
             <About />
             <Experience />
+            <Skills />
             <Projects />
             <Research />
             <Contact />
