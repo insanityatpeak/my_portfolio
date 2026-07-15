@@ -19,25 +19,67 @@ interface Repo {
 
 export default function Projects() {
   const { data: allRepos, error } = useSWR<any>(
-    'https://api.github.com/users/insanityatpeak/repos?sort=updated&per_page=15',
+    'https://api.github.com/users/insanityatpeak/repos?per_page=100',
     fetcher
   );
 
-  const excludedRepos = ['insanityatpeak', 'html_updatation', 'nutrivision-ai', 'nutrivision', 'code-contribution'];
-  
+  const pinnedRepoNames = [
+    'chatgpt_from_temu',
+    'juro',
+    'kryptonite-ai',
+    'blue-berry-berry-or-nothing',
+    'the-word-project',
+    'nalayak_beta',
+  ];
+
   let repos: Repo[] | null = null;
   let usingFallback = false;
 
   if (allRepos && Array.isArray(allRepos)) {
-    repos = allRepos.filter(repo => !excludedRepos.includes(repo.name.toLowerCase())).slice(0, 6) as Repo[];
+    const matchedRepos = allRepos.filter((repo) =>
+      pinnedRepoNames.includes(repo.name.toLowerCase())
+    );
+    repos = matchedRepos
+      .sort(
+        (a, b) =>
+          pinnedRepoNames.indexOf(a.name.toLowerCase()) -
+          pinnedRepoNames.indexOf(b.name.toLowerCase())
+      )
+      .map((repo) => {
+        const fallbackProject = PROJECTS.find((p) =>
+          p.github.toLowerCase().endsWith(`/${repo.name.toLowerCase()}`)
+        );
+        return {
+          ...repo,
+          homepage: repo.homepage || fallbackProject?.homepage,
+          topics:
+            repo.topics && repo.topics.length > 0
+              ? repo.topics
+              : fallbackProject?.tags || [],
+        };
+      }) as Repo[];
+
+    if (!repos || repos.length === 0) {
+      repos = PROJECTS.map((p) => ({
+        id: p.id,
+        name: p.title,
+        description: p.description,
+        html_url: p.github,
+        homepage: p.homepage,
+        stargazers_count: 0,
+        topics: p.tags,
+      }));
+      usingFallback = true;
+    }
   } else if ((allRepos && !Array.isArray(allRepos)) || error) {
-    repos = PROJECTS.map(p => ({
+    repos = PROJECTS.map((p) => ({
       id: p.id,
       name: p.title,
       description: p.description,
       html_url: p.github,
+      homepage: p.homepage,
       stargazers_count: 0,
-      topics: p.tags
+      topics: p.tags,
     }));
     usingFallback = true;
   }

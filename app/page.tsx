@@ -7,6 +7,7 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
 import Skills from '@/components/Skills';
+import Certifications from '@/components/Certifications';
 import AlgoTrading from '@/components/AlgoTrading';
 import LeetCodeStats from '@/components/LeetCodeStats';
 
@@ -34,6 +35,7 @@ export default function Home() {
             <About />
             <Experience />
             <Skills />
+            <Certifications />
             <Projects />
             <Research />
             <Contact />
