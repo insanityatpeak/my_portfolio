@@ -75,6 +75,7 @@ export const PROJECTS = [
     title: "kryptonite-ai",
     description: "An open-source, autonomous AI workflow automation platform. Visual drag-and-drop workflow builder powered by Next.js 15, React Flow, OpenRouter AI, Better Auth, and Neon Postgres.",
     tags: ["TypeScript", "React Flow", "AI"],
+    homepage: "https://kryptonite-ai.vercel.app/",
     github: "https://github.com/insanityatpeak/kryptonite-ai",
   },
   {
