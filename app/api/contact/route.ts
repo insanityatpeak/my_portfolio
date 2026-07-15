@@ -18,7 +18,26 @@ export async function POST(req: Request) {
     console.log(`Message: ${message}`);
     console.log('------------------------------');
 
-    // TODO: Replace with Resend: https://resend.com/docs
+    if (process.env.RESEND_API_KEY) {
+      try {
+        await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+          },
+          body: JSON.stringify({
+            from: 'Portfolio Contact <onboarding@resend.dev>',
+            to: ['priyanshurawat2104@gmail.com'],
+            subject: `Portfolio Inquiry from ${name}`,
+            reply_to: email,
+            text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+          }),
+        });
+      } catch (err) {
+        console.error('Failed to send email via Resend:', err);
+      }
+    }
 
     return NextResponse.json(
       { success: true, message: 'Message received' },

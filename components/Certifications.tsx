@@ -30,7 +30,7 @@ export default function Certifications() {
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`rounded-full px-3.5 py-1.5 text-xs font-mono transition-all duration-300 ${
+                className={`rounded-full px-4 py-2.5 min-h-[44px] flex items-center justify-center text-xs font-mono transition-all duration-300 ${
                   isActive
                     ? 'bg-green-neon/15 text-green-neon border border-green-neon/40 shadow-[0_0_12px_rgba(0,255,65,0.15)] font-semibold'
                     : 'bg-surface/60 text-slate-400 hover:text-slate-200 hover:bg-surface border border-transparent'

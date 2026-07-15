@@ -2,7 +2,7 @@ export const SITE_META = {
   name: "Priyanshu Rawat",
   university: "Manipal University Jaipur (MUJ)",
   degree: "B.Tech CSE w/ specialization in IoT & IS | CGPA: 8.1",
-  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? '',
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "priyanshurawat2104@gmail.com",
   github: "https://github.com/insanityatpeak",
   leetcode: "https://leetcode.com/u/priyanshu_rawat_1729/",
   linkedin: "https://www.linkedin.com/in/priyanshu-rawat-235518242/",

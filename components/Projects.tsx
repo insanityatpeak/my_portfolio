@@ -36,6 +36,17 @@ export default function Projects() {
   let repos: Repo[] | null = null;
   let usingFallback = false;
 
+  const buildFallbackRepos = (): Repo[] =>
+    PROJECTS.map((p) => ({
+      id: p.id,
+      name: p.title,
+      description: p.description,
+      html_url: p.github,
+      homepage: p.homepage,
+      stargazers_count: 0,
+      topics: p.tags,
+    }));
+
   if (allRepos && Array.isArray(allRepos)) {
     const matchedRepos = allRepos.filter((repo) =>
       pinnedRepoNames.includes(repo.name.toLowerCase())
@@ -47,11 +58,18 @@ export default function Projects() {
           pinnedRepoNames.indexOf(b.name.toLowerCase())
       )
       .map((repo) => {
-        const fallbackProject = PROJECTS.find((p) =>
-          p.github.toLowerCase().endsWith(`/${repo.name.toLowerCase()}`)
-        );
+        const fallbackProject = PROJECTS.find((p) => {
+          const slug = p.github.split('/').pop()?.toLowerCase();
+          return (
+            slug === repo.name.toLowerCase() ||
+            p.id.toLowerCase() === repo.name.toLowerCase() ||
+            p.title.toLowerCase() === repo.name.toLowerCase()
+          );
+        });
         return {
           ...repo,
+          name: fallbackProject?.title || repo.name,
+          description: fallbackProject?.description || repo.description || 'No description provided.',
           homepage: repo.homepage || fallbackProject?.homepage,
           topics:
             repo.topics && repo.topics.length > 0
@@ -61,29 +79,14 @@ export default function Projects() {
       }) as Repo[];
 
     if (!repos || repos.length === 0) {
-      repos = PROJECTS.map((p) => ({
-        id: p.id,
-        name: p.title,
-        description: p.description,
-        html_url: p.github,
-        homepage: p.homepage,
-        stargazers_count: 0,
-        topics: p.tags,
-      }));
+      repos = buildFallbackRepos();
       usingFallback = true;
     }
   } else if ((allRepos && !Array.isArray(allRepos)) || error) {
-    repos = PROJECTS.map((p) => ({
-      id: p.id,
-      name: p.title,
-      description: p.description,
-      html_url: p.github,
-      homepage: p.homepage,
-      stargazers_count: 0,
-      topics: p.tags,
-    }));
+    repos = buildFallbackRepos();
     usingFallback = true;
   }
+
 
   return (
     <section id="projects" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">

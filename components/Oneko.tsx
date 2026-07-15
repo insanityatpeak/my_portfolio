@@ -44,6 +44,18 @@ export default function Oneko() {
       NW: [[-1, 0], [-1, -1]],
     };
 
+    const handleMouseMove = (e: MouseEvent) => {
+      mousePosX = e.clientX;
+      mousePosY = e.clientY;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches && e.touches.length > 0) {
+        mousePosX = e.touches[0].clientX;
+        mousePosY = e.touches[0].clientY;
+      }
+    };
+
     function create() {
       if (!nekoEl) return;
       nekoEl.style.width = "32px";
@@ -56,10 +68,9 @@ export default function Oneko() {
       nekoEl.style.top = `${nekoPosY - 16}px`;
       nekoEl.style.zIndex = "9999";
 
-      document.addEventListener("mousemove", (e) => {
-        mousePosX = e.clientX;
-        mousePosY = e.clientY;
-      });
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("touchstart", handleTouchMove, { passive: true });
+      document.addEventListener("touchmove", handleTouchMove, { passive: true });
 
       animationFrameId = window.requestAnimationFrame(onAnimationFrame);
     }
@@ -180,7 +191,10 @@ export default function Oneko() {
     // Cleanup event listeners and animation frame on unmount
     return () => {
       window.cancelAnimationFrame(animationFrameId);
-    }
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("touchstart", handleTouchMove);
+      document.removeEventListener("touchmove", handleTouchMove);
+    };
 
   }, []);
 
