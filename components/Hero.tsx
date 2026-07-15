@@ -102,10 +102,13 @@ export default function Hero() {
             )}
             
             <a 
-              href="/resume.pdf" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="border border-transparent text-slate-300 px-4 py-2 min-h-[44px] font-mono hover:text-green-neon transition-colors flex items-center justify-center gap-2"
+              href={(SITE_META.resume || "/resume.pdf") + "?v=" + new Date().toISOString().split('T')[0]} 
+              onClick={(e) => {
+                e.preventDefault();
+                const resumeUrl = (SITE_META.resume || "/resume.pdf") + "?t=" + Date.now();
+                window.open(resumeUrl, "_blank", "noopener,noreferrer");
+              }}
+              className="border border-transparent text-slate-300 px-4 py-2 min-h-[44px] font-mono hover:text-green-neon transition-colors flex items-center justify-center gap-2 cursor-pointer"
             >
               Resume ↗
             </a>
