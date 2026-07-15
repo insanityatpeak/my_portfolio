@@ -1,7 +1,7 @@
 export const SITE_META = {
   name: "Priyanshu Rawat",
   university: "Manipal University Jaipur (MUJ)",
-  degree: "B.Tech CSE — IoT & Information Security",
+  degree: "B.Tech CSE w/ specialization in IoT & IS | CGPA: 8.1",
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? '',
   github: "https://github.com/insanityatpeak",
   leetcode: "https://leetcode.com/u/priyanshu_rawat_1729/",
@@ -11,25 +11,33 @@ export const SITE_META = {
 
 export const EXPERIENCE = [
   {
-    id: "gssoc",
-    role: "Open Source Contributor",
-    company: "GSSoC",
+    id: "juro",
+    role: "AI Tribunal for Denied Health Insurance Claims",
+    company: "JURO (Solo project)",
     period: "2024–Present",
     bullets: [
-      "PR reviews on live repos",
-      "CI/CD pipeline contributions",
-      "cross-team code review culture",
+      "Built a multi-agent claims-adjudication system (LangGraph, FastAPI, Supabase) simulating a tribunal of AI agents to evaluate denied insurance claims",
+      "Won Second Runner-Up at Build the Future with AI — From Code to No-Code",
     ],
   },
   {
     id: "imc",
-    role: "Algorithmic Trader",
-    company: "IMC Prosperity Rounds 1+3",
+    role: "Algorithmic Trading Competitor",
+    company: "IMC Prosperity 4 (Remote)",
     period: "2024–2025",
     bullets: [
-      "EMA-based market making on synthetic assets",
-      "Options spread farming on VEV_xxxx series",
-      "Fixed position tracker divergence bug in Round 1",
+      "Designed and iterated a Python market-making strategy using adaptive EMA fair-value models and OTM spread farming across two live markets (ASH_COATED_OSMIUM, INTARIAN_PEPPER_ROOT)",
+      "Diagnosed and resolved fair-value misalignment, order-budget overflow, and position-divergence bugs through systematic log/CSV analysis",
+    ],
+  },
+  {
+    id: "gssoc",
+    role: "Open Source Contributor",
+    company: "GSSoC 2026 (Remote)",
+    period: "2024–Present",
+    bullets: [
+      "Shipped backend and ML-adjacent pull requests across multiple GSSoC repositories",
+      "Reviewed peer code and triaged issues cohort-wide",
     ],
   },
   {
@@ -41,17 +49,6 @@ export const EXPERIENCE = [
       "WPA3-SAE LSTM anomaly detector — 98.4% accuracy, 0.993 ROC-AUC",
       "Hidden IoT camera detection via cyber-physical correlation",
       "ONNX export for edge deployment — 550KB, <15ms inference",
-    ],
-  },
-  {
-    id: "mlh",
-    role: "MLH Hackathon",
-    company: "Team Scooby_Doing",
-    period: "2024",
-    bullets: [
-      "Autonomous AI cybersecurity agent for SMBs",
-      "MERN + Python ML stack",
-      "48hr build sprint",
     ],
   },
 ];
@@ -93,6 +90,13 @@ export const PROJECTS = [
     description: "A high-performance, cross-platform terminal word puzzle and discovery engine written in modern C11 with dynamic ASCII art, ANSI styling, and interactive game loops.",
     tags: ["C", "Terminal", "Game"],
     github: "https://github.com/insanityatpeak/The-Word-Project",
+  },
+  {
+    id: "streamtube",
+    title: "StreamTube – One OTT for Everyone",
+    description: "OTT-style streaming application integrating third-party movie APIs with dynamic routing, category filtering, client-side caching, and optimized data fetching for seamless content discovery.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "REST APIs"],
+    github: "https://github.com/insanityatpeak/StreamTube",
   },
   {
     id: "nalayak_beta",

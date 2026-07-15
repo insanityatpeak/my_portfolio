@@ -29,6 +29,7 @@ export default function Projects() {
     'kryptonite-ai',
     'blue-berry-berry-or-nothing',
     'the-word-project',
+    'streamtube',
     'nalayak_beta',
   ];
 
