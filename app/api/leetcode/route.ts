@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
+import { rateLimit, getClientIp } from '@/lib/rate-limit';
 
 const LEETCODE_API = 'https://leetcode.com/graphql';
+const USERNAME_RE = /^[a-zA-Z0-9_-]{1,50}$/;
 
 const QUERY = `
   query getUserStats($username: String!) {
@@ -32,11 +34,20 @@ function findCount(stats: SubmissionStat[], difficulty: string): number {
 }
 
 export async function GET(req: Request) {
+  const ip = getClientIp(req);
+  if (!rateLimit(`leetcode:${ip}`, 20, 60 * 1000)) {
+    return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
+  }
+
   const { searchParams } = new URL(req.url);
   const username =
     searchParams.get('username') ||
     process.env.NEXT_PUBLIC_LEETCODE_USERNAME?.split('leetcode.com/u/')[1]?.replace('/', '') ||
     'priyanshu_rawat_1729';
+
+  if (!USERNAME_RE.test(username)) {
+    return NextResponse.json({ error: 'Invalid username' }, { status: 400 });
+  }
 
   try {
     const res = await fetch(LEETCODE_API, {
