@@ -19,7 +19,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: 'Priyanshu Rawat',
-  description: 'IoT & InfoSec Engineer. MUJ \'27.',
+  description: 'Builder & Founder working on distributed systems and AI full-stack products. MUJ \'27.',
 };
 
 export const viewport: Viewport = {
