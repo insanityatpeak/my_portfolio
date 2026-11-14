@@ -20,22 +20,18 @@ export default function About() {
         className="text-slate-400 font-sans leading-relaxed"
       >
         <p className="mb-4">
-          I&apos;m {SITE_META.name} — a backend engineer, AI/ML researcher, and algorithmic trader.
-          My work spans anomaly detection pipelines for wireless security protocols, low-latency
-          algorithmic trading strategies, and open-source systems engineering.
+          I&apos;m {SITE_META.name}, a builder and founder working on distributed systems, system design,
+          and AI full-stack SaaS. I&apos;m Founder &amp; CTO of The Founder Den, where I build REST APIs,
+          webhook handlers, and async job queues with auth, rate limiting, and idempotency.
         </p>
         <p className="mb-4">
-          My work lives at the intersection of systems engineering and applied AI — from building LSTM-based
-          anomaly detectors for WPA3-SAE to designing EMA-driven market making strategies for IMC Prosperity.
-          I care about the full stack of a problem: the math, the architecture, and the performance.
-        </p>
-        <p className="mb-4">
-          Outside of work, I compete in algorithmic trading simulations, grind competitive programming, and ship
-          side projects with a startup lens — focused on things that could eventually clear a YC application.
+          I&apos;ve won 5 national-level AI hackathons with JURO, a multi-agent claims adjudication system.
+          I also built Chunkd, a GFS-style distributed file system in Go that survived 2 of 5 node failures
+          with zero data loss. I&apos;ve solved 470+ LeetCode problems and I&apos;m a GSSoC 2026 contributor.
         </p>
         <p>
-          Currently deep in: distributed backend systems, LLM tooling, cybersecurity research, and building toward
-          early-stage VC funding.
+          Right now I&apos;m going deep on distributed backends, scalable system design, and LLM-powered
+          products. I&apos;m building in public toward early-stage startups and a YC-ready company.
         </p>
       </motion.div>
     </section>

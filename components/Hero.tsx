@@ -13,10 +13,9 @@ import AsciiArt from './AsciiArt';
 export default function Hero() {
   const [showScroll, setShowScroll] = useState(true);
   const { displayText } = useTypewriter([
-    "Backend Engineer",
-    "AI/ML Researcher",
-    "Algorithmic Trader",
-    "Systems Engineer"
+    "Builder & Founder",
+    "Distributed Systems",
+    "AI Full-Stack"
   ], 80);
 
   useEffect(() => {
@@ -87,7 +86,7 @@ export default function Hero() {
           </motion.div>
           
           <motion.p variants={itemVariants} className="text-muted max-w-xl text-base md:text-lg mb-10 leading-relaxed">
-            Shipping backend systems, ML pipelines, and algorithmic trading strategies that run in production.
+            I build backend-heavy products, from distributed storage to multi-agent AI SaaS, and ship them end to end.
           </motion.p>
           
           <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 mb-12">

@@ -52,10 +52,10 @@ export default function Navigation() {
           <Link href="/">{SITE_META.name}</Link>
         </h1>
         <h2 className="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl font-mono text-cyan-accent">
-          Backend & AI/ML Intern
+          Builder & Founder · Distributed Systems · AI Full-Stack
         </h2>
         <p className="mt-4 max-w-xs leading-normal text-slate-400">
-          Shipping backend systems, ML pipelines, and algorithmic trading strategies that run in production.
+          I build backend-heavy products, from distributed storage to multi-agent AI SaaS, and ship them end to end.
         </p>
 
         <nav className="nav hidden lg:block mt-16">
