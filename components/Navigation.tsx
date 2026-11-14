@@ -32,11 +32,11 @@ export default function Navigation() {
 
   const navLinks = [
     { name: 'About', id: 'about' },
+    { name: 'Projects', id: 'projects' },
     { name: 'Experience', id: 'experience' },
+    { name: 'Research', id: 'research' },
     { name: 'Skills', id: 'skills' },
     { name: 'Certifications', id: 'certifications' },
-    { name: 'Projects', id: 'projects' },
-    { name: 'Research', id: 'research' },
     { name: 'Contact', id: 'contact' },
   ];
 
@@ -54,9 +54,25 @@ export default function Navigation() {
         <h2 className="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl font-mono text-cyan-accent">
           Builder & Founder · Distributed Systems · AI Full-Stack
         </h2>
-        <p className="mt-4 max-w-xs leading-normal text-slate-400">
-          I build backend-heavy products, from distributed storage to multi-agent AI SaaS, and ship them end to end.
-        </p>
+
+        <nav aria-label="Sections" className="lg:hidden mt-6 -mx-6 px-6 md:-mx-12 md:px-12 overflow-x-auto">
+          <ul className="flex gap-2 w-max">
+            {navLinks.map((link) => (
+              <li key={link.id}>
+                <a
+                  href={`#${link.id}`}
+                  className={`flex items-center min-h-[44px] px-4 border rounded-sm text-xs font-mono uppercase tracking-widest transition-colors ${
+                    activeSection === link.id
+                      ? 'border-green-neon/60 text-green-neon'
+                      : 'border-border-dim text-slate-400'
+                  }`}
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
         <nav className="nav hidden lg:block mt-16">
           <ul className="mt-8 w-max">

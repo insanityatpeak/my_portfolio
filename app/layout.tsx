@@ -20,6 +20,13 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'Priyanshu Rawat',
   description: 'Builder & Founder working on distributed systems and AI full-stack products. MUJ \'27.',
+  metadataBase: new URL('https://my-portfolio-alpha-nine-82.vercel.app'),
+  openGraph: {
+    title: 'Priyanshu Rawat',
+    description: 'Builder & Founder working on distributed systems and AI full-stack products.',
+    type: 'website',
+  },
+  twitter: { card: 'summary', title: 'Priyanshu Rawat' },
 };
 
 export const viewport: Viewport = {

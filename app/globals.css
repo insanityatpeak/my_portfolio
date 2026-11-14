@@ -10,7 +10,7 @@
   --card: #0d1117;
   --green-neon: #00ff41;
   --cyan-accent: #00d4ff;
-  --muted: #4a4a4a;
+  --muted: #8a8f98;
   --border-dim: #1a1a1a;
 
   /* Vercel-style stacked shadow primitives */
@@ -61,8 +61,18 @@ html {
 }
 
 /* ─── Hide OS cursor on fine-pointer — AnimatedCursor replaces it ─── */
-@media (pointer: fine) {
+@media (pointer: fine) and (min-width: 640px) {
   * { cursor: none !important; }
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* ─── Typography rhythm — letter-spacing and line-height ─── */

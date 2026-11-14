@@ -141,17 +141,10 @@ export default function Contact() {
               animate={{ opacity: 1, y: 0 }}
               className="flex flex-col gap-3 p-4 border border-green-neon/30 bg-green-neon/10 rounded-sm text-green-neon text-sm font-mono"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2" role="status">
                 <CheckCircle size={16} />
-                <span>Message submitted! To guarantee instant delivery right to my inbox:</span>
+                <span>Message sent. I&apos;ll reply to the email you provided.</span>
               </div>
-              <a
-                href={`mailto:${SITE_META.email}?subject=${encodeURIComponent('Portfolio Inquiry: ' + form.name)}&body=${encodeURIComponent(form.message + '\n\nFrom: ' + form.name + ' (' + form.email + ')')}`}
-                className="inline-flex items-center justify-center gap-2 py-2.5 px-4 bg-green-neon text-black font-semibold text-xs rounded hover:bg-green-neon/90 transition-colors"
-              >
-                <Mail size={14} />
-                Click here to launch your Email Client
-              </a>
             </motion.div>
           )}
 
@@ -163,7 +156,7 @@ export default function Contact() {
             >
               <div className="flex items-center gap-2">
                 <AlertCircle size={16} />
-                <span>Couldn&apos;t connect to server. Please email me directly:</span>
+                <span role="alert">Couldn&apos;t send your message. Your text is kept above; please email me directly:</span>
               </div>
               <a
                 href={`mailto:${SITE_META.email}?subject=${encodeURIComponent('Portfolio Contact: ' + form.name)}&body=${encodeURIComponent(form.message + '\n\nFrom: ' + form.name + ' (' + form.email + ')')}`}

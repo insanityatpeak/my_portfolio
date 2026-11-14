@@ -13,12 +13,12 @@ const config: Config = {
         card: '#0d1117',
         'green-neon': '#00ff41',
         'cyan-accent': '#00d4ff',
-        muted: '#4a4a4a',
+        muted: '#8a8f98',
         'border-dim': '#1a1a1a',
       },
       fontFamily: {
-        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
-        sans: ['Space Grotesk', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-mono)', 'JetBrains Mono', 'ui-monospace', 'monospace'],
+        sans: ['var(--font-sans)', 'Space Grotesk', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {
         tightest: '-0.03em',

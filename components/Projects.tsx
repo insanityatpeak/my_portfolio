@@ -85,7 +85,9 @@ export default function Projects() {
       repos = buildFallbackRepos();
       usingFallback = true;
     }
-  } else if ((allRepos && !Array.isArray(allRepos)) || error) {
+  } else {
+    // Loading, rate-limited, or failed: show the static list so server HTML
+    // and no-JS visitors always see projects.
     repos = buildFallbackRepos();
     usingFallback = true;
   }
@@ -102,7 +104,7 @@ export default function Projects() {
       <div>
         <ul className="group/list">
           {!repos && !error && !allRepos && (
-            <div className="text-slate-400 font-mono text-sm animate-pulse">Loading projects...</div>
+            <li className="text-slate-400 font-mono text-sm animate-pulse">Loading projects...</li>
           )}
           
           {repos && repos.map((repo) => (

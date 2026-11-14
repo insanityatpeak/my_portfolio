@@ -58,9 +58,16 @@ export async function POST(req: Request) {
       console.log('------------------------------');
     }
 
-    if (process.env.RESEND_API_KEY) {
+    if (!process.env.RESEND_API_KEY) {
+      return NextResponse.json(
+        { error: 'Email delivery is not configured.' },
+        { status: 503 }
+      );
+    }
+
+    {
       try {
-        await fetch('https://api.resend.com/emails', {
+        const resendRes = await fetch('https://api.resend.com/emails', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -74,8 +81,13 @@ export async function POST(req: Request) {
             text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
           }),
         });
+        if (!resendRes.ok) {
+          console.error('Resend rejected email:', resendRes.status);
+          return NextResponse.json({ error: 'Failed to send message.' }, { status: 502 });
+        }
       } catch (err) {
         console.error('Failed to send email via Resend:', err);
+        return NextResponse.json({ error: 'Failed to send message.' }, { status: 502 });
       }
     }
 

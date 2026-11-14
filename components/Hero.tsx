@@ -90,6 +90,15 @@ export default function Hero() {
           </motion.p>
           
           <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 mb-12">
+            <button
+              type="button"
+              onClick={scrollToProjects}
+              className="bg-green-neon text-black px-6 py-2.5 min-h-[44px] font-mono text-sm font-semibold hover:bg-green-neon/90 transition-colors flex items-center justify-center gap-2 rounded-md"
+            >
+              View selected work
+              <ArrowDown size={16} aria-hidden="true" />
+            </button>
+
             {SITE_META.email && (
               <a 
                 href={`mailto:${SITE_META.email}`}
@@ -137,7 +146,7 @@ export default function Hero() {
         transition={{ duration: 0.5 }}
         className="absolute bottom-12 left-1/2 -translate-x-1/2 text-green-neon animate-bounce"
       >
-        <ArrowDown size={24} />
+        <ArrowDown size={24} aria-hidden="true" />
       </motion.div>
     </motion.div>
   );

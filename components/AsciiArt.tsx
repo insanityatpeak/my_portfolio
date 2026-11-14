@@ -238,6 +238,8 @@ export default function AsciiArt({
   return (
     <canvas
       ref={canvasRef}
+      role="img"
+      aria-label="ASCII art portrait of Priyanshu Rawat"
       width={width}
       height={height}
       className="max-w-full h-auto cursor-crosshair w-full object-contain"
