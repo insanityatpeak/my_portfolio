@@ -24,9 +24,12 @@ export default function Projects() {
   );
 
   const pinnedRepoNames = [
-    'chatgpt_from_temu',
     'juro',
+    'civiclens',
+    'chunkd',
     'kryptonite-ai',
+    'smart_campus',
+    'chatgpt_from_temu',
     'blue-berry-berry-or-nothing',
     'the-word-project',
     'streamtube',

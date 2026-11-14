@@ -56,13 +56,6 @@ export const EXPERIENCE = [
 
 export const PROJECTS = [
   {
-    id: "chatgpt_from_temu",
-    title: "Chatgpt_from_temu",
-    description: "add ur api key and expierece a temu slick version of chatgpt.",
-    tags: ["JavaScript", "AI"],
-    github: "https://github.com/insanityatpeak/Chatgpt_from_temu",
-  },
-  {
     id: "juro",
     title: "Juro",
     description: "An adversarial AI tribunal for denied health-insurance claims. Four agents argue a denial in one shared room on Band, a human delivers the binding ruling, and every line is hash-chained.",
@@ -71,12 +64,43 @@ export const PROJECTS = [
     github: "https://github.com/insanityatpeak/Juro",
   },
   {
+    id: "civiclens",
+    title: "CivicLens",
+    description: "A photo-to-complaint assistant for civic issues. A vision model lists what it sees versus assumes, then drafts an editable complaint in English or Hindi, with a rule-based validator checking every claim against the evidence.",
+    tags: ["Python", "AI", "Vision"],
+    homepage: "https://civiclens-prns.onrender.com/",
+    github: "https://github.com/insanityatpeak/CivicLens",
+  },
+  {
+    id: "chunkd",
+    title: "chunkd",
+    description: "Fault-tolerant distributed file store in Go, GFS/HDFS style: 3-way replication, failure detection, throttled re-replication, and scrubbing. Chaos-tested, and runs in your browser.",
+    tags: ["Go", "gRPC", "Distributed Systems"],
+    homepage: "https://insanityatpeak.github.io/chunkd/",
+    github: "https://github.com/insanityatpeak/chunkd",
+  },
+  {
     id: "kryptonite-ai",
     title: "kryptonite-ai",
     description: "An open-source, autonomous AI workflow automation platform. Visual drag-and-drop workflow builder powered by Next.js 15, React Flow, OpenRouter AI, Better Auth, and Neon Postgres.",
     tags: ["TypeScript", "React Flow", "AI"],
     homepage: "https://kryptonite-ai.vercel.app/",
     github: "https://github.com/insanityatpeak/kryptonite-ai",
+  },
+  {
+    id: "smart_campus",
+    title: "smart_campus",
+    description: "Full-stack Smart Campus Management Platform built for DevFusion 4.O, with role-based portals for students, faculty, coordinators and admins covering attendance, assignments, events, placements, announcements and analytics.",
+    tags: ["TypeScript", "Full-Stack", "Auth"],
+    homepage: "https://smart-campus-drab.vercel.app",
+    github: "https://github.com/insanityatpeak/smart_campus",
+  },
+  {
+    id: "chatgpt_from_temu",
+    title: "Chatgpt_from_temu",
+    description: "add ur api key and expierece a temu slick version of chatgpt.",
+    tags: ["JavaScript", "AI"],
+    github: "https://github.com/insanityatpeak/Chatgpt_from_temu",
   },
   {
     id: "blue-berry",

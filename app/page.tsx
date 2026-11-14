@@ -8,8 +8,6 @@ import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
 import Skills from '@/components/Skills';
 import Certifications from '@/components/Certifications';
-import AlgoTrading from '@/components/AlgoTrading';
-import LeetCodeStats from '@/components/LeetCodeStats';
 
 export default function Home() {
   return (
@@ -18,14 +16,6 @@ export default function Home() {
         
         {/* Full width Hero at the top, matching gazijarin.com V4 style */}
         <Hero />
-
-        {/* LeetCode live stats strip */}
-        <div className="mt-8 flex justify-center lg:justify-start">
-          <LeetCodeStats />
-        </div>
-
-        {/* AlgoTrading PnL card — full-width between hero and split layout */}
-        <AlgoTrading />
 
         {/* Split layout underneath */}
         <div className="lg:flex lg:justify-between lg:gap-4">

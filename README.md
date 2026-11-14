@@ -24,13 +24,16 @@ A sleek, ultra-fast personal portfolio and interactive digital resume engineered
 - **Glowing Hover Aesthetics**: High-impact cards with ambient glow effects and custom typography.
 
 ### 📌 Live Pinned Repositories Integration
-- **Real-Time GitHub Sync**: Utilizes `useSWR` to fetch and sort live data directly from GitHub (`api.github.com`), displaying your exact **6 Pinned Repositories** in precise profile order:
-  1. `Chatgpt_from_temu`
-  2. `Juro`
-  3. `kryptonite-ai`
-  4. `Blue-Berry-Berry-or-NOTHING`
-  5. `The-Word-Project`
-  6. `nalayak_beta`
+- **Real-Time GitHub Sync**: Utilizes `useSWR` to fetch and sort live data directly from GitHub (`api.github.com`), displaying your featured repositories in precise profile order:
+  1. `Juro`
+  2. `CivicLens`
+  3. `chunkd`
+  4. `kryptonite-ai`
+  5. `smart_campus`
+  6. `Chatgpt_from_temu`
+  7. `Blue-Berry-Berry-or-NOTHING`
+  8. `The-Word-Project`
+  9. `nalayak_beta`
 - **Offline & Fallback Resilience**: Automatically falls back to a curated static project list if network rates limit or offline access occurs.
 
 ### ⚡ Performance & Physics Engine
